@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import login from '../../assets/Login/login.jpg'
+import toast from "react-hot-toast";
 function Login() {
+
   return (
+  
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="flex flex-col md:flex-row max-w-4xl w-full bg-white shadow-lg rounded-lg overflow-hidden">
-        
+    
         {/* Left side image */}
         <div className="hidden md:flex md:w-1/2">
           <img
