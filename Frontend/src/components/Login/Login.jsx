@@ -1,7 +1,18 @@
-import React, { useEffect } from "react";
-import login from '../../assets/Login/login.jpg'
-import toast from "react-hot-toast";
+import React, { useEffect, useState } from "react";
+import img from '../../assets/Login/login.jpg'
+import useLogin from "../../Hooks/useLogin.js";
+
 function Login() {
+  const [inputs,setInputs]=useState({
+    email:"",
+    password:""
+  })
+  const {loading,login}=useLogin();
+  const handlesubmit = async(e)=>{
+    e.preventDefault();
+    const res = await login(inputs);
+    console.log(res);
+  }
 
   return (
   
@@ -11,7 +22,7 @@ function Login() {
         {/* Left side image */}
         <div className="hidden md:flex md:w-1/2">
           <img
-            src={login}
+            src={img}
             alt="Login"
             className="object-cover w-full h-auto"
           />
@@ -29,6 +40,8 @@ function Login() {
               <input
                 type="text"
                 id="usernameOrEmail"
+                value={inputs.email}
+                onChange={(e)=>setInputs({...inputs,email:e.target.value})}
                 name="usernameOrEmail"
                 className="mt-1 w-full rounded-md border-gray-300 shadow-sm text-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 placeholder="Enter your username or email"
@@ -42,6 +55,8 @@ function Login() {
               <input
                 type="password"
                 id="password"
+                value={inputs.password}
+                onChange={(e)=>setInputs({...inputs,password:e.target.value})}
                 name="password"
                 className="mt-1 w-full rounded-md border-gray-300 shadow-sm text-gray-700 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                 placeholder="Enter your password"
@@ -63,8 +78,9 @@ function Login() {
 
             <div>
               <button
-                type="submit"
+               
                 className="w-full flex justify-center bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                onClick={handlesubmit}
               >
                 Login
               </button>

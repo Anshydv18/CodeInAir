@@ -9,6 +9,7 @@ import Login from './components/Login/Login.jsx';
 import ContactForm from './components/ContactUs/ContactUs.jsx';
 import Dsasheet from './components/DSASheet/Dsasheet.jsx';
 import { Toaster } from 'react-hot-toast';
+import { AuthContextProvider } from './Context/AuthContext.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +25,9 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AuthContextProvider>
     <RouterProvider router={router} />
     <Toaster />
+    </AuthContextProvider>
   </StrictMode>
 );
