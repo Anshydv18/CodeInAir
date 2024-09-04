@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Dashboard = () => {
-  return (
-    <div>
-      <h2>Welcome Main</h2>
-    </div>
-  )
-}
+    const [data, setData] = useState('');
 
-export default Dashboard
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch('http://localhost:3000/api/auth/getdetail', {
+                    method: 'POST'
+                });
+
+                if (!res.ok) {
+                    // Handle non-2xx responses
+                    throw new Error('Error fetching data 1');
+                }
+
+                const dd = await res.json();
+                setData(dd);
+            } catch (error) {
+                toast.error("Error fetching data");
+                console.error('Fetch error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        <div>
+            <h2>Welcome Main: {data ? data : 'Loading...'}</h2>
+        </div>
+    );
+};
+
+export default Dashboard;

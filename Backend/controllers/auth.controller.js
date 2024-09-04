@@ -79,7 +79,7 @@ export const Login = async (req, res) => {
 };
   
 
-  export const logout = (req,res)=>{
+  export const logout = async(req,res)=>{
     try {
         res.clearCookie("jwt",{maxage:0});
         res.status(200).json({
@@ -88,4 +88,20 @@ export const Login = async (req, res) => {
     } catch (error) {
         res.status(400).json({error:"unable to login",message:error.message});
     }
-  }
+}
+
+export const getDetail = async(req,res)=>{
+    try {
+        const userid = req.user_id;
+       const user = await User.findById(userid).select("-password");
+       if(!user){
+        res.status(400).json({error:"user not found"})
+       }
+    
+       
+       res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json({error:"Message mila nahi"})
+    }
+
+}
