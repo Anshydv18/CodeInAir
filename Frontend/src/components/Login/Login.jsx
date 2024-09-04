@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import img from '../../assets/Login/login.jpg'
 import useLogin from "../../Hooks/useLogin.js";
+import { useAuthContext } from "../../Context/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [inputs,setInputs]=useState({
     email:"",
     password:""
   })
+  const navigate= useNavigate();
+  const {user, setUser} = useAuthContext();
   const {loading,login}=useLogin();
   const handlesubmit = async(e)=>{
     e.preventDefault();
     const res = await login(inputs);
-    console.log(res);
+    if(user){
+      navigate("/dashboard")
+    }
   }
 
   return (

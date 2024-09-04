@@ -47,32 +47,36 @@ export const Signup= async(req,res)=>{
     }
 };
 
+
 export const Login = async (req, res) => {
-    try {
-      const { email, username, password } = req.body;
-  
-      const user = await User.findOne({
-        $or: [{ email }, { username }],
-      });
-  
+  try {
+      const { email, password } = req.body;
+
+      // Use await to get the user
+      const user = await User.findOne({ email });
+
+      // Check if user exists
       if (!user) {
-        return res.status(404).json({ error: "User doesn't exist with this username or email" });
-      }
-  
-      const isPasswordCorrect = await bcrypt.compare(password, user.password);
-     
-  
-      if (!isPasswordCorrect) {
-        return res.status(400).json({ error: "Password is incorrect" });
+          return res.status(404).json({ error: "User doesn't exist with this email" });
       }
 
-      generateTokenAndSetCookie(user?._id,res)
-      return res.status(500).json({ message: "Login successful" });
-    } catch (error) {
-     
-      return res.status(400).json({ error: "Login unable, server issue" });
-    }
-  };
+      // Check if password is correct
+      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordCorrect) {
+          return res.status(400).json({ error: "Password is incorrect" });
+      }
+
+      // Generate token and set cookie
+      generateTokenAndSetCookie(user._id, res);
+
+      // Respond with success
+      return res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+      // Handle any unexpected errors
+      return res.status(500).json({ error: "Login unable, server issue" });
+  }
+};
   
 
   export const logout = (req,res)=>{
