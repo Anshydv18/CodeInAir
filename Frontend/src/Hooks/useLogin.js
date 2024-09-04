@@ -1,8 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const useLogin = ()=>{
+    const naviagte = useNavigate();
     const [loading,setLoading]=useState(false);
     const {user,setUser} = useAuthContext();
     const login = async({email,password})=>{
@@ -25,9 +27,11 @@ const useLogin = ()=>{
             if(!data){
                 toast.error("use do not exit")
             }
-            localStorage.setItem("user",JSON.stringify(data))
             setUser(data);
+            localStorage.setItem("user",JSON.stringify(data))
+
             toast.success("Login ho gya")
+            naviagte("/dashboard")
         } catch (error) {
             toast.error(error.message)
         }
