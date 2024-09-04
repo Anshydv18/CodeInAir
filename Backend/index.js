@@ -11,12 +11,13 @@ dotenv.config();
 
 const port = 3000 || 5000;
 
+
 const corsOptions = {
-    origin: ["http://localhost:5173","*"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  };
+  origin: ["http://localhost:5173"], // Replace with your front-end URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
 app.use(cors(corsOptions))
 app.use(cookieParser())

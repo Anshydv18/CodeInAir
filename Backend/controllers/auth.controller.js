@@ -92,6 +92,8 @@ export const Login = async (req, res) => {
 
 export const getDetail = async(req,res)=>{
     try {
+        const name = req.body;
+        
         const userid = req.user_id;
        const user = await User.findById(userid).select("-password");
        if(!user){
