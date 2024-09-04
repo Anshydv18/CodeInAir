@@ -10,8 +10,15 @@ dotenv.config();
 //create ainstance of that express as a server
 
 const port = 3000 || 5000;
-app.use(cors())
 
+const corsOptions = {
+    origin: ["http://localhost:4000"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  };
+
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json()) // for using the componets , or data from the client side,that is send by the user
 // app.use(express.urlencoded({ extended: true })); // for using the componets urlencoding , or data
