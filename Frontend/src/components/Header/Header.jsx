@@ -51,7 +51,7 @@ function Header() {
         const data = await response.json();
         setUser(data);
       } catch (error) {
-        toast.error("Error fetching data");
+       //toast.error("Error fetching data header");
         console.error("Fetch error:", error);
       }
     };

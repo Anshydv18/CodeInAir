@@ -12,6 +12,12 @@ const blogSchema = new Schema({
         required:true,
         trim:true,
     },
+    company:{
+        type:String,
+        required:true,
+        trim:true,
+        index:true,
+    },
     author:{
         type:Schema.Types.ObjectId,
         ref:"User",

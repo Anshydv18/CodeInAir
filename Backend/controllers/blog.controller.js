@@ -4,11 +4,12 @@ export const createPost = async(req,res)=>{
     try {
         
         
-        const {title, content} = req.body;
+        const {title, content,company} = req.body;
         const userid = req.user_id;
         const blog =  new Blog({
             title,
             content,
+            company,
             author:userid
         })
         if(!blog){

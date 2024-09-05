@@ -1,14 +1,16 @@
 import React, { useRef, useState } from 'react'
 import JoditEditor from 'jodit-react'
+ import { useCreatePost } from '../../Hooks/useCreatePost.js';
 
 function Editor() {
   const editor = useRef(null);
 	const [content, setContent] = useState('');
-
 	const [title,settitle]=useState('');
 	const [company,setcompany]=useState('');
-  const handlesubmit = ()=>{
+	const {create,loading} = useCreatePost();
+  const handlesubmit = async()=>{
 	// send data to tha backend from here
+	const res = await create({title,content,company})
   }
 	return (
 		<div className='px-16'>
