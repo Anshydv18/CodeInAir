@@ -32,14 +32,15 @@ const Dashboard = () => {
         fetchData();
     }, []);
 
-    // Log the data to see what is being set
+   
     useEffect(() => {
         console.log('Data updated:', data);
     }, [data]);
 
     return (
-        <div>
-            <h2>Welcome : {data ? data.username : 'Loading...'}</h2>
+        <div className='px-16'>
+
+            <h2 className=' text-center'>Welcome : {data ? data.username : 'Loading...'}</h2>
         </div>
     );
 };

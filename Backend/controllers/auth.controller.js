@@ -79,28 +79,31 @@ export const Login = async (req, res) => {
 };
   
 
-  export const logout = async(req,res)=>{
+export const logout = async(req,res)=>{
     try {
-        res.clearCookie("jwt",{maxage:0});
+        res.clearCookie("jwt", {
+            httpOnly: true,
+            sameSite: 'Strict', // SameSite attribute used when setting the cookie
+            path: '/',          // Path attribute used when setting the cookie
+            // secure: true      // Uncomment if the cookie was set with secure: true
+        });
         res.status(200).json({
-            message:"Logged out successfully"
-        })
+            message: "Logged out successfully"
+        });
     } catch (error) {
-        res.status(400).json({error:"unable to login",message:error.message});
+        res.status(400).json({ error: "Unable to logout", message: error.message });
     }
+    
 }
 
 export const getDetail = async(req,res)=>{
     try {
         const name = req.body;
-        
         const userid = req.user_id;
        const user = await User.findById(userid).select("-password");
        if(!user){
         res.status(400).json({error:"user not found"})
        }
-    
-       
        res.status(200).json(user)
     } catch (error) {
         res.status(400).json({error:"Message mila nahi"})
