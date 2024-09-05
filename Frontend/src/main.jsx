@@ -11,6 +11,7 @@ import Dsasheet from './components/DSASheet/Dsasheet.jsx';
 import { Toaster } from 'react-hot-toast';
 import { AuthContextProvider } from './Context/AuthContext.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
+import Editor from './components/Editor/Editor.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path='contactus' element={<ContactForm />} />
       <Route path='dsa' element={<Dsasheet />} />
       <Route path='dashboard' element={<Dashboard/>}/>
+      <Route path='editor' element={<Editor/>} />
     </Route>
   )
 );
