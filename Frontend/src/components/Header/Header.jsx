@@ -56,6 +56,9 @@ function Header() {
       }
     };
 
+    const fetchblogs = async()=>{
+      
+    }
     fetchData();
   },[]);
 
