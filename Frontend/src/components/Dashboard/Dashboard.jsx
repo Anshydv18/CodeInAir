@@ -74,7 +74,7 @@ const Dashboard = () => {
                     onClick={(e) => { nav("/editor") }}
                     className='px-6 py-3 bg-sky-500 mx-2 my-1 rounded-xl hover:bg-sky-300'
                 >
-                    Create Post
+                    CreatePost
                 </Link>
             </div>
             <div>

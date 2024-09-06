@@ -71,7 +71,7 @@ function Header() {
       {/* services */}
       <div className="flex gap-4">
         <Link to="/">Home</Link>
-        <a href="#">Interview</a>
+        <Link to="/interview">Interview</Link>
         <Link to="dsa">DSA sheet</Link>
         <Link to="contactus">Contact Us</Link>
       </div>

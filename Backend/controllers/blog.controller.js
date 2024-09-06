@@ -115,3 +115,13 @@ export const getblogs = async (req, res) => {
         res.status(500).json({ error: "An internal error occurred" });
     }
 };
+
+
+export const interview = async(req,res)=>{
+    try {
+        const latestPost =  await Blog.find().sort({id:-1}).limit(8).exec();
+        res.status(200).json({latestPost});
+    } catch (error) {
+        res.status(400).json({error:"something went wrong interview"})
+    }
+}
