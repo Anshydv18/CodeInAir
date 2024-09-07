@@ -6,10 +6,11 @@ import DOMPurify from "dompurify";
 const Dashboard = () => {
   const [data, setData] = useState(null); // Initialize as null to handle loading state
   const [post, setPost] = useState([]);
+  const [update,setupdate] =useState(0)
   const nav = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
+  
+    const fetchUser = async () => {
       try {
         const response = await fetch(
           "http://localhost:3000/api/auth/getdetail",
@@ -36,10 +37,7 @@ const Dashboard = () => {
       }
     };
 
-    fetchData();
-  }, []);
 
-  useEffect(() => {
     const blogs = async () => {
       try {
         const res = await fetch("http://localhost:3000/api/blog/getblog", {
@@ -63,14 +61,26 @@ const Dashboard = () => {
       }
     };
 
+   useEffect(()=>{
+    fetchUser();
     blogs();
-  }, []);
+   },[])
 
-  const deletePost =  async()=>{
+  const deletePost =  async(obj)=>{
     try {
-        const response = await fetch('http://localhost:3000/api/blog/delete/${}')
+        const response = await fetch(`http://localhost:3000/api/blog/delete/${obj}`,{
+          method:"POST",
+          headers:{"Content-Type":"Application/json"},
+          credentials:"include",
+          body:JSON.stringify({})
+        })
+        if(!response.ok){
+          toast.error(response.statusText)
+        }
+        toast.success('post deleted 🤷‍♀️')
+        blogs()
     } catch (error) {
-        
+        toast.error(error.message)
     }
   }
 
@@ -107,7 +117,7 @@ const Dashboard = () => {
                       Update
                     </button>
                     <button
-                      
+                    onClick={() => deletePost(post._id)}
                       className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                     >
                       Delete

@@ -45,17 +45,29 @@ export const updatePost = async(req,res)=>{
 }
 
 export const deletePost = async(req,res)=>{
-    try {
+    try { 
         const blogId = req.params.id;
-        await Blog.deleteOne({_id:blogId});
         const userId = req.user_id;
-        const user =  await User.findById({userId});
-        if(!user){
-            res.status(404).json({error:"user not found"})
+        const user = await User.findById(userId);
+        
+        if (!user) {
+          return res.status(404).json({ error: 'User not found' });
         }
+        
         user.blogs.pull(blogId);
-        await user.save();
-        res.status(200).json({message:"deleted Successfully"});
+        await user.save(); // Save the updated user document
+        
+       
+        const result = await Blog.deleteOne({ _id: blogId });
+        
+        if (result.deletedCount === 0) {
+          return res.status(404).json({ error: 'Blog not found' });
+        }
+        
+       
+        res.status(200).json({ message: 'Blog deleted successfully' });
+        
+      
     } catch (error) {
         res.status(500).json({error:"server is not responding"});
     }
