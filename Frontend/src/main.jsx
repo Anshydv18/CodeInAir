@@ -13,6 +13,7 @@ import { AuthContextProvider } from './Context/AuthContext.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Editor from './components/Editor/Editor.jsx';
 import Interview from './Pages/Interview.jsx';
+import PostInterview from './Pages/PostInterview.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='dashboard' element={<Dashboard/>}/>
       <Route path='editor' element={<Editor/>} />
       <Route path='interview' element={<Interview/>} />
+      <Route path='post' element={<PostInterview/>}/>
     </Route>
   )
 );

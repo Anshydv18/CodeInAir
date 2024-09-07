@@ -48,40 +48,19 @@ export const deletePost = async(req,res)=>{
     try {
         const blogId = req.params.id;
         await Blog.deleteOne({_id:blogId});
+        const userId = req.user_id;
+        const user =  await User.findById({userId});
+        if(!user){
+            res.status(404).json({error:"user not found"})
+        }
+        user.blogs.pull(blogId);
+        await user.save();
         res.status(200).json({message:"deleted Successfully"});
     } catch (error) {
         res.status(500).json({error:"server is not responding"});
     }
 }
 
-// export const getblogs = async(req,res)=>{
-//     try {
-//         console.log("enter");
-        
-//         const userid = req.user_id;
-//         if(!userid){
-//             res.status(400).json({error:"userid not found"})
-//         }
-//         const user = User.findById({userid});
-//         if(!user){
-//             res.status(404).json({error:"user not found"})
-//         }
-//         console.log(user);
-        
-//         const arr=[] ;
-//         const len = user.blogs.length;
-//         for(let i=0;i<len;i++){
-//             const blog = Blog.findById(user.blogs[i]);
-//             if(!blog){
-//                 res.status(400).json({error:"blogs error "})
-//             }
-//             arr.push(blog);
-//         }
-//         res.status(200).json({blogs:arr})
-//     } catch (error) {
-//         res.status(400).json({error})
-//     }
-// }
 
 export const getblogs = async (req, res) => {
     try {

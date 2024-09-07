@@ -42,7 +42,7 @@ const Interview = () => {
             <h2 className="card-title">{post.company}</h2>
             <p>{post.title}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary" onClick={(e)=>{}}>Read it</button>
+              <button className="btn btn-primary" onClick={(e)=>{nav('/post', { state:{data:post}})}}>Read it</button>
             </div>
           </div>
            </div>
