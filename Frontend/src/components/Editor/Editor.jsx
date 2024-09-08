@@ -3,13 +3,13 @@ import JoditEditor from 'jodit-react'
  import { useCreatePost } from '../../Hooks/useCreatePost.js';
 
 function Editor() {
-  const editor = useRef(null);
+    const editor = useRef(null);
 	const [content, setContent] = useState('');
 	const [title,settitle]=useState('');
 	const [company,setcompany]=useState('');
 	const {create,loading} = useCreatePost();
   const handlesubmit = async()=>{
-	// send data to tha backend from here
+
 	const res = await create({title,content,company})
   }
 	return (
@@ -45,7 +45,7 @@ function Editor() {
 			value={company}
 			onChange={(e)=>{setcompany(e.target.value)}}
 		/>
-   {/* submit ka button dena hai */}
+  
       <button onClick={handlesubmit} className='px-4 py-2 rounded-md'>Submit</button>
 		</div>
 	  </div>

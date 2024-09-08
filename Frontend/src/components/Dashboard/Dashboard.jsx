@@ -6,7 +6,6 @@ import DOMPurify from "dompurify";
 const Dashboard = () => {
   const [data, setData] = useState(null); // Initialize as null to handle loading state
   const [post, setPost] = useState([]);
-  const [update,setupdate] =useState(0)
   const nav = useNavigate();
 
   
@@ -20,12 +19,11 @@ const Dashboard = () => {
               "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify({}), // Send an empty object if the backend expects a body
+            body: JSON.stringify({}), 
           }
         );
 
         if (!response.ok) {
-          // Handle non-2xx responses
           throw new Error("Error fetching data");
         }
 
@@ -53,11 +51,11 @@ const Dashboard = () => {
           throw new Error("Error fetching data of blog");
         }
 
-        const data = await res.json(); // Correctly parse the JSON response
-        setPost(data.blogs || []); // Set post to empty array if data.blogs is undefined
+        const data = await res.json(); 
+        setPost(data.blogs || []); 
       } catch (error) {
-        console.error("Blog fetching error:", error); // Log the error for debugging
-        toast.error("Blog fetching error"); // Display a user-friendly message
+       
+        toast.error("Blog fetching error"); 
       }
     };
 
@@ -111,8 +109,8 @@ const Dashboard = () => {
                   <span className="text-md font-medium">{post.title}</span>
                   <div className="space-x-2">
                     <button
-                      
                       className=" mx-2 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      onClick={(e)=>{nav('/updateeditor',{state:{data:post}})}}
                     >
                       Update
                     </button>

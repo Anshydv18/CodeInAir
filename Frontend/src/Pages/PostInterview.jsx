@@ -7,14 +7,13 @@ function PostInterview() {
   const location = useLocation();
 
   useEffect(() => {
-    // Set the post data when the component mounts or location.state changes
     const data = location.state?.data || {};
     setPost(data);
   }, [location.state]);
 
-  // Ensure post is not empty before using it
+ 
   if (!post || Object.keys(post).length === 0) {
-    return <div>Loading...</div>; // or some other placeholder
+    return <div>Loading...</div>; 
   }
 
   return (
