@@ -33,7 +33,7 @@ function Editor() {
 			ref={editor}
 			value={content}
 			
-			onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+			onBlur={newContent => setContent(newContent)}
 			onChange={newContent => {}}
 			
 		/>
@@ -46,7 +46,7 @@ function Editor() {
 			onChange={(e)=>{setcompany(e.target.value)}}
 		/>
   
-      <button onClick={handlesubmit} className='px-4 py-2 rounded-md'>Submit</button>
+      <button onClick={handlesubmit} className='px-4 py-2 rounded-md bg-purple-900 text-white text-shadow-sm hover:bg-purple-700'>Submit</button>
 		</div>
 	  </div>
     </div>

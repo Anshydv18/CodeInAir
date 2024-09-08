@@ -61,7 +61,7 @@ function Updateeditor() {
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
                         />
-                        <button onClick={() => handlesubmit(post._id)} className="px-4 py-2 rounded-md">
+                        <button onClick={() => handlesubmit(post._id)} className="px-4 py-2 rounded-md bg-purple-800 text-white mt-4">
                             Update
                         </button>
                     </div>

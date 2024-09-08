@@ -13,3 +13,13 @@
   .text-shadow-lg {
     text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
   }
+
+  /* styles.css */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  

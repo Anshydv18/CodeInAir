@@ -77,15 +77,16 @@ const Dashboard = () => {
         }
         toast.success('post deleted 🤷‍♀️')
         blogs()
+        fetchUser()
     } catch (error) {
         toast.error(error.message)
     }
   }
 
   return (
-    <div className="px-16 border border-red-400">
+    <div className="px-16 bg-custom-gradient py-16 ">
       <div className="flex flex-row justify-end items-center">
-        <h2 className="text-center w-full">
+        <h2 className="text-center w-full text-shadow-lg text-2xl font-bold bg-white py-3 rounded-xl mr-4">
           Welcome: {data ? data.username : "Loading..."}
         </h2>
         <Link
@@ -97,23 +98,44 @@ const Dashboard = () => {
           CreatePost
         </Link>
       </div>
-      <div className="flex flex-row">
-        <div className="w-1/2">
+      <div className="flex flex-row justify-evenly mt-12 mb-12">
+        <div className="w-1/2 border-l-4 border-b-4">
           {/* Placeholder for potential future content */}
+           <div className=" flex flex-row justify-around items-center">
+            <div>
+            <img src={`https://api.multiavatar.com/${data?.fullname}.svg`} 
+            className="w-48"/>
+            </div>
+            <div className="flex flex-col gap-y-2  ">
+              {/* for details of user */}
+              <h1>Name : <span className="font-semibold underline text-md px-4">{data?.fullname }</span></h1>
+              <h2>username: <span className="font-semibold underline text-md px-4"> {data?.username}</span></h2>
+              <h2>email : <span className="font-semibold underline text-md px-4">{data?.email}</span> </h2>
+              <h2>position : <span className="font-semibold underline text-md px-4"> {data?.position}</span></h2>
+              <h2>Blog Count : <span className="font-semibold underline text-md px-4">{data?.blogs.length}</span></h2>
+            </div>
+           </div>
         </div>
-        <div className="flex justify-center items-center border shadow-lg px-4 pb-8">
+        <div className="w-1/2 flex justify-center items-center px-4 pb-8  ml-4 border-l-4 border-b-4 ">
           <div className="pt-16 ">
             {post.length > 0 ? (
               post.map((post) => (
                 <div className="flex items-center justify-between p-4 mb-2 bg-white border border-gray-300 rounded-lg shadow-md">
                   <span className="text-md font-medium">{post.title}</span>
-                  <div className="space-x-2">
+                  <div className="mx-4 space-x-2">
+                   <button
+                      className=" mx-2 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      onClick={(e)=>{nav('/post',{state:{data:post}})}}
+                    >
+                      View
+                    </button>
                     <button
                       className=" mx-2 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       onClick={(e)=>{nav('/updateeditor',{state:{data:post}})}}
                     >
                       Update
                     </button>
+                   
                     <button
                     onClick={() => deletePost(post._id)}
                       className="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import img from '../../src/assets/herosection/herosection.jpg'
 const Interview = () => {
   const nav = useNavigate();
     const [post,setpost]=useState([])
@@ -24,10 +25,15 @@ const Interview = () => {
         }
         data();
     },[])
-    console.log(post)
+  
   return (
-    <div>
-     <div className='flex flex-row flex-wrap gap-x-6 justify-around'>
+    <div
+   
+    className='bg-black mx-16'
+    >
+      <div className='w-full h-full glassmorphism'>
+     <div className='flex flex-row flex-wrap gap-x-6 justify-around mt-16'
+     >
          {/*  */}
 
          {post.length>0 && post.map((post)=>(
@@ -49,6 +55,7 @@ const Interview = () => {
          ))}
 
          {/*  */}
+     </div>
      </div>
     </div>
   )

@@ -18,7 +18,7 @@ function PostInterview() {
 
   return (
     <div className="px-16">
-      <h1 className="px-16 mb-4 text-4xl font-semibold bg-teal-700 py-6 text-white text-shadow-lg ">{post.title}</h1>
+      <h1 className="px-16 mb-4 text-4xl font-semibold bg-teal-700 py-4 text-white text-shadow-lg rounded-2xl">{post.title}</h1>
       <div class="max-w-full overflow-x-auto bg-white p-4 shadow-md">
     <p
       dangerouslySetInnerHTML={{
@@ -27,7 +27,7 @@ function PostInterview() {
       className="break-all"
     />
       </div>
-      <h2 className=" inline-block bg-red-500 px-16 py-4 rounded-xl">{post.company}</h2>
+      <h2 className=" inline-block bg-red-500 px-16 py-4 rounded-xl mb-4 mt-4">{post.company}</h2>
     </div>
   );
 }
