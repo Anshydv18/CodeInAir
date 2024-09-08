@@ -35,14 +35,14 @@ const Interview = () => {
           <figure>
            
                <div className='bg-custom-gradient flex justify-center items-center  h-[200px] w-full bg-green-500'>
-                <h1 className='w-16 text-white font-bold text-4xl'>{post.company}</h1>
+                <h1 className='w-16 text-white font-bold text-4xl text-shadow-lg'>{post.company}</h1>
                </div>
           </figure>
            <div className="card-body">
             <h2 className="card-title">{post.company}</h2>
             <p>{post.title}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary" onClick={(e)=>{nav('/post', { state:{data:post}})}}>Read it</button>
+              <button className="btn btn-primary text-shadow-sm" onClick={(e)=>{nav('/post', { state:{data:post}})}}>Read it</button>
             </div>
           </div>
            </div>

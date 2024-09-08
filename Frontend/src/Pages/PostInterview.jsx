@@ -18,7 +18,7 @@ function PostInterview() {
 
   return (
     <div className="px-16">
-      <h1 className="px-16 mb-4 text-4xl font-semibold bg-teal-700 py-6">{post.title}</h1>
+      <h1 className="px-16 mb-4 text-4xl font-semibold bg-teal-700 py-6 text-white text-shadow-lg ">{post.title}</h1>
       <div class="max-w-full overflow-x-auto bg-white p-4 shadow-md">
     <p
       dangerouslySetInnerHTML={{
