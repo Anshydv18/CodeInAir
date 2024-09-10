@@ -7,7 +7,7 @@ export const useCreatePost = () => {
     const create = async ({ title, content, company }) => {
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:3000/api/blog/create', {
+            const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/blog/create`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

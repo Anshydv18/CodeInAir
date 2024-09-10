@@ -9,7 +9,7 @@ export const useLogout = () => {
     const logout = async () => {
         setLoading(true); // Set loading to true when starting logout
         try {
-            const res = await fetch('http://localhost:3000/api/auth/logout', {
+            const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/auth/logout`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 credentials:"include",

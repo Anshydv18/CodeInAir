@@ -12,7 +12,7 @@ function Header() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/auth/logout", {
+      const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/auth/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -35,7 +35,7 @@ function Header() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/auth/getdetail", {
+        const response = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/auth/getdetail`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

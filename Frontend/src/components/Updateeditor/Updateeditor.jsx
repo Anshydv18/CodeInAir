@@ -20,7 +20,7 @@ function Updateeditor() {
 
     const handlesubmit = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/blog/update/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/blog/update/${id}`, {
                 method: "POST",
                 headers: { "Content-Type": 'application/json' },
                 credentials: "include",

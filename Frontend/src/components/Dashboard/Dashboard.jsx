@@ -12,7 +12,7 @@ const Dashboard = () => {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/auth/getdetail",
+          `${import.meta.env.VITE_LOCAL_HOST}/api/auth/getdetail`,
           {
             method: "POST",
             headers: {
@@ -38,7 +38,7 @@ const Dashboard = () => {
 
     const blogs = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/blog/getblog", {
+        const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/blog/getblog`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -64,9 +64,10 @@ const Dashboard = () => {
     blogs();
    },[])
 
+   
   const deletePost =  async(obj)=>{
     try {
-        const response = await fetch(`http://localhost:3000/api/blog/delete/${obj}`,{
+        const response = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/blog/delete/${obj}`,{
           method:"POST",
           headers:{"Content-Type":"Application/json"},
           credentials:"include",

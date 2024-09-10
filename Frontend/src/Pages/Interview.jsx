@@ -9,7 +9,7 @@ const Interview = () => {
         // yaha mei 8 bando  ka experience show karaunga
         const data = async()=>{
             try {
-                const res = await fetch('http://localhost:3000/api/blog/interview',{
+                const res = await fetch(`${import.meta.env.VITE_LOCAL_HOST}/api/blog/interview`,{
                     method:"POST",
                     headers:{"Content-Type":"Application/json"},
                     body:JSON.stringify({})

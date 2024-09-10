@@ -1,5 +1,6 @@
 import React from "react";
 import hero from '../../assets/herosection/herosection.jpg'
+import { Link } from "react-router-dom";
 function Herosection() {
   return (
     <div className=" px-16">
@@ -12,29 +13,30 @@ function Herosection() {
               Let us find your
               <strong className="block font-extrabold text-rose-500">
                 {" "}
-                Forever Home.{" "}
+                Future Career.{" "}
               </strong>
             </h1>
 
-            <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-              illo tenetur fuga ducimus numquam ea!
+            <p className="mt-4 max-w-lg text-rose-500 sm:text-xl/relaxed font-bold">
+            "Reading is essential for those who seek to rise above the ordinary.” 
+
+
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 text-center">
-              <a
-                href="#"
+              <Link
+                to={"/interview"}
                 className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
               >
                 Get Started
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                to={"/interview"}
                 className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
