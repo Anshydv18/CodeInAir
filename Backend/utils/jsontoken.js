@@ -7,8 +7,9 @@ const generateTokenAndSetCookie = (userId,res)=>{
         "jwt",token,{
             httpOnly:true,
             maxAge:1*24*60*60*1000,
-           // secure:true,
-            sameSite:"strict",
+            sameSite: "none",  // prevent csrf attacks & cross-site request forgery attacks
+      httpOnly: true, // prevent xss attacks & cross-site scripting attacks
+      secure: true,
         }
     )
 }
