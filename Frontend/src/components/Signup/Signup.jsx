@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import signup from '../../assets/Signup/Signup.jpg';
+// import signup from '../../assets/Signup/Signup.jpg';
 import useSignup from "../../Hooks/useSignup.js";
 
 function Signup() {
@@ -29,7 +29,8 @@ function Signup() {
         {/* Left side image */}
         <div className="hidden md:flex md:w-1/2">
           <img
-            src={signup}
+            // src={signup}
+            src=""
             alt="Signup"
             className="object-cover w-full h-auto"
           />
