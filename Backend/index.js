@@ -5,12 +5,13 @@ import authRoutes  from '../Backend/routers/auth.router.js'
 import BlogRoutes from './routers/blog.router.js';
 import cors from 'cors'
 import dotenv from 'dotenv'
+import morgan from 'morgan'
 const app = express();
 dotenv.config();
 //create ainstance of that express as a server
 
 const port = 3000 || 5000;
-
+app.use(morgan('dev'))
 
 const corsOptions = {
   origin: ["http://localhost:5173"], // Replace with your front-end URL
