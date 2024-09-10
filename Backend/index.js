@@ -14,7 +14,7 @@ const port = 3000 || 5000;
 app.use(morgan('dev'))
 
 const corsOptions = {
-  origin: ["https://code-in-air.pages.dev"], // Replace with your front-end URL
+  origin: ["https://6833fef9.code-in-air.pages"], // Replace with your front-end URL
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
