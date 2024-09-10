@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import signup from '../../assets/Signup/signup.jpg';
+import signup from '../../assets/Signup/Signup.jpg';
 import useSignup from "../../Hooks/useSignup.js";
 
 function Signup() {
